@@ -20,7 +20,7 @@ Widget that calculates the credit amount required for financing an house in Port
 
 ![Screenshot_1](https://github.com/luisalexleite/html-widgets/blob/main/credit-simulator/Screenshots/Screen_1.png)
 
-## To embed on your website you add this code:
+## To embed on your website you can add this code:
 
 ```
 <iframe width="100%" height=3000 src="https://rawcdn.githack.com/luisalexleite/html-widgets/c437472dae1404bf9e7ed828f657b4612e84a5a4/credit-simulator/index.html?min=1&cor=439666" title="Simulador de Crédito à Habitação">
