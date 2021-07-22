@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/luisalexleite/html-widgets/blob/main/Screenshots/html-js-css.png" />
+  <img src="https://github.com/luisalexleite/html-widgets/blob/main/credit-simulator/Screenshots/logo.png" />
 </p>
 
 # Credit Simulator
