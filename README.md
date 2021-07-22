@@ -1,4 +1,4 @@
-# html-widgets
+# HTML Widgets
 
 Widget collection to use on HTML + CSS + JS projects.
 
