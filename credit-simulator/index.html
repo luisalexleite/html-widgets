@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Crédito à Habitação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+</head>
+
+<body>
+    <p id="loading">
+        Loading...
+    </p>
+    <div class="row">
+        <h5 class="center-align">Simulador Crédito à Habitação</h5>
+        <hr>
+        <p class="center-align">
+            Esta simulação é meramente informativa e o valor da prestação é calculado com base num conjunto de pressupostos pré-definidos. Para efetuar uma simulação completa dirija-se a uma agência bancária da sua preferência.
+        </p>
+        <div>
+            <br>
+            <div class="col s12 l4" style="text-align: center;">
+                <i class="medium material-icons">home</i>
+                <br>
+                <span>Preço do Imóvel</span>
+                <div class="container">
+                    <input id="textpreco" type="text" value="100,000 €">
+                    <small>Min:5,000€ / Max:1,000,000€</small>
+                    <input id="precorange" type="range" min=5000 max=1000000 value=100000 step=100 oninput="rangeControlinput('preco', this.value)">
+                </div>
+            </div>
+            <div class="col s12 l4" style="text-align: center;">
+                <i class="medium material-icons">account_balance_wallet</i>
+                <br>
+                <span>Poupanças</span>
+                <div class="container">
+                    <input id="textpoupancas" type="text" value="10,000 €" onclick="this.value = '';">
+                    <small>Min:500€ / Max:950,000€</small>
+                    <input id="poupancasrange" type="range" min=500 max=995000 value=10000 step=500 oninput="rangeControlinput('poupancas', this.value)">
+                </div>
+            </div>
+            <div class="col s12 l4" style="text-align: center;">
+                <i class="medium material-icons">date_range</i>
+                <br>
+                <span>Quantos anos?</span>
+                <div class="container">
+                    <input id="textanos" type="text" value="40" onclick="this.value = '';">
+                    <small>Min:5 anos / Max:40 anos</small>
+                    <input id="anosrange" type="range" min=5 max=40 value=40 oninput="rangeControlinput('anos', this.value)">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12">
+                    <p>
+                        <label class="tipotaxa">
+                        <input name="tipotaxa" type="radio" value=1 onclick="mistaClick()" checked/>
+                        <span>Taxa de juro mista (fixa nos primeiros anos e variável nos restantes)</span>
+                    </label>
+                        <br>
+                        <span id="anosoculto">
+                        <label class="tipotaxa">
+                            <input class="with-gap" name="mista" type="radio" onclick="Action()" value=5>
+                            <span>5 anos&nbsp;</span>
+                        </label>
+                        <label class="tipotaxa">
+                            <input class="with-gap" name="mista" type="radio" onclick="Action()" value=7>
+                            <span>7 anos&nbsp;</span>
+                        </label>
+                        <label class="tipotaxa">
+                            <input class="with-gap" name="mista" type="radio" onclick="Action()" value=10>
+                            <span>10 anos&nbsp;</span>
+                        </label>
+                        <label class="tipotaxa">
+                            <input class="with-gap" name="mista" type="radio" onclick="Action()" value=15>
+                            <span>15 anos&nbsp;</span>
+                        </label>
+                        <label class="tipotaxa">
+                            <input class="with-gap" name="mista" type="radio" onclick="Action()" value=20>
+                            <span>20 anos&nbsp;</span>
+                        </label>
+                        <label class="tipotaxa">
+                            <input class="with-gap" name="mista" type="radio" onclick="Action()" value=25>
+                            <span>25 anos&nbsp;</span>
+                        </label>
+                        <label class="tipotaxa">
+                            <input class="with-gap" name="mista" type="radio" onclick="Action()" value=30 checked/>
+                            <span>30 anos&nbsp;</span>
+                        </label>
+                        </span>
+                        <br>
+                        <div id="taxamistataxas">
+                            <label>
+                        <span>Taxa Fixa:&nbsp;</span>
+                        <input id="taxamistatext" type="text" value="1,5 %">
+                        <input id="taxarangemista" type="range" hidden value=1.5 min=0.1 max=10.0 step=0.1 hidden>
+                    </label>
+                            <small>Min:0,1% / Max:10%</small>
+                            <br>
+                            <label>
+                        <span>Spread:&nbsp;</span>
+                        <input id="spreadmistatext" type="text" value="1,5 %">
+                        <input id="spreadrangemista" type="range" hidden value=1.5 min=0.5 max=2.0 step=0.1 hidden>
+                    </label>
+                            <small>Min:0,5% / Max:2%</small>
+                        </div>
+                    </p>
+                    <p>
+                        <label class="tipotaxa">
+                        <input name="tipotaxa" type="radio" value=2 onclick="fixaClick()" disabled>
+                        <span>Taxa de juro fixa</span>
+                        <br>
+                        <label>
+                            <span class="taxatext">Taxa Fixa:&nbsp;</span>
+                            <input class="taxatext" id="taxatext" type="text" value="1,5 %">
+                            <input id="taxarange" type="range" value=1.5 hidden min=0.1 max=10.0 step=0.1 hidden>
+                        </label>
+                        </label>
+                        <small class="taxatext">Min:0,1% / Max:10%</small>
+                    </p>
+                    <p>
+                        <label class="tipotaxa">
+                        <input name="tipotaxa" type="radio" value=3 onclick="varClick()">
+                        <span>Euribor a 12 meses</span>
+                    </label>
+                        <br>
+                        <label class="tipotaxa">
+                        <span class="spreadtext">Spread:&nbsp;</span>
+                        <input class="spreadtext" id="spreadtext" type="text" value="1,5 %">
+                        <input id="spreadrange" type="range" hidden value=1.5 min=0.5 max=2.0 step=0.1 hidden>
+                    </label>
+                        <small class="spreadtext">Min:0,5% / Max:2%</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="col s12 noselect">
+                <div id="outras" class="collapsible-header">Custos do Empréstimo</div>
+            </div>
+            <div class="col s12 l4">
+                <div class="card background darken-1">
+                    <div class="card-content white-text">
+                        <i class="medium material-icons">euro_symbol</i>
+                        <h6>Preço Total (sem despesas)</h6>
+                        <h5 id="preco">0 €</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 l4">
+                <div class="card background darken-1">
+                    <div class="card-content white-text">
+                        <i class="medium material-icons">event</i>
+                        <h6>Mensalidade (Taxa de juro incluída)</h6>
+                        <h5 id="precomes">0 €</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 l4">
+                <div class="card background darken-1">
+                    <div class="card-content white-text">
+                        <i class="medium material-icons">date_range</i>
+                        <h6>Nº de Mensalidades</h6>
+                        <h5 id="mensalidades">0</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="col s12 noselect">
+                <div id="outras" class="collapsible-header">Outras Despesas</div>
+            </div>
+            <div class="outras">
+                <div class="col s12 l4">
+                    <div class="card background darken-1">
+                        <div class="card-content white-text">
+                            <i class="medium material-icons">euro_symbol</i>
+                            <h6>Preço Total (com despesas)</h6>
+                            <h5 id="precototal">0 €</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 l4">
+                    <div class="card background darken-1">
+                        <div class="card-content white-text">
+                            <i class="medium material-icons">grading</i>
+                            <h6>Outros Custos Associados</h6>
+                            <h5 id="outros">0 €</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 l4">
+                    <div class="card background darken-1">
+                        <div class="card-content white-text">
+                            <i class="medium material-icons">account_balance</i>
+                            <h6>Encargos Bancários</h6>
+                            <h5 id="banco">0 €</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <footer class="page-footer background">
+                <div class="container">
+                    <div class="row">
+                        <div class="col l6 s12">
+                            <h5 class="white-text">Simulador de Crédito à Habitação</h5>
+                            <p class="grey-text text-lighten-4">Estes resultados são orientativos, calculados a partir dos números que introduziste.</p>
+                        </div>
+                        <div class="col l4 offset-l2 s12">
+                            <h5 class="white-text">Critérios de Contabilização</h5>
+                            <ul>
+                                <li>Euribor Hoje:<span id="euribor"></span></a>
+                                </li>
+                                <li>Taxa IMI de Referência: 0.5 %</li>
+                                <li class="center-align">Outros Impostos Adicionados:</li>
+                                <li class="center-align">IMT</li>
+                                <li class="center-align">Imposto de Selo</li>
+                                <li class="center-align">Seguro de Vida Habitação (9,41 €/ mês)</li>
+                                <li class="center-align">Seguro Multirriscos Habitação (7,03 €/ mês)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright" style="height: 200px;">
+                    <div class="container">
+                        © 2021 github.com/luisalexleite
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js" integrity="sha512-rKFvwjvE4liWPlFnvH4ZhRDfNZ9FOpdkD/BU5gAIA3VS3vOQrQ5BjKgbO3kxebKhHdHcNUHLqxQYSoxee9UwgA==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jstat@1.9.2/dist/jstat.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/formulajs/formulajs@2.5.0/dist/formula.min.js"></script>
+<script src="js/index.js"></script>
+
+</html>

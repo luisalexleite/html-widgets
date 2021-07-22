@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+:root {
+    --primary-color: #439666;
+}
+
+html,
+body {
+    border: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    font-family: Roboto;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.collapsible-header {
+    cursor: default;
+}
+
+.tipotaxa {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.thumb {
+    display: none;
+}
+
+#loading {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background-color: #ddd;
+    /* ... */
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.background {
+    background-color: var(--primary-color);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    background-color: var(--primary-color);
+}
+
+input[type="range"]::-moz-range-thumb {
+    background-color: var(--primary-color);
+}
+
+input[type="range"]::-ms-thumb {
+    background-color: var(--primary-color);
+}
+
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:before,
+[type="radio"].with-gap:checked+span:after {
+    border: 2px solid var(--primary-color);
+}
+
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:after {
+    background-color: var(--primary-color);
+}
