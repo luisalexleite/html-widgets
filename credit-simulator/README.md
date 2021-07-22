@@ -2,6 +2,11 @@
 
 Widget that calculates the credit amount required for financing an house in Portugal.
 
+## Features:
+
+- Responsive at every frequently used resolution
+- Collects the last euribor taxes
+
 ## It takes variables like:
 
 - The house value
