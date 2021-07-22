@@ -26,3 +26,8 @@ Widget that calculates the credit amount required for financing an house in Port
 - To change the color of the widget you have to change the "cor" atribute on src link, you can get the color code on [Color Picker](https://www.w3schools.com/colors/colors_picker.asp), for example the code for "Red" is ff0000.
 
 - To change the width and height of your widget you must change the width and heigth atributes on <iframe>, more information on how that works in this [link](https://www.w3schools.com/cssref/css_units.asp).
+
+### To be impelmented ❌:
+  
+- Readable code and comments
+- Translation to English
