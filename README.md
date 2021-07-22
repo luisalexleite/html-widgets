@@ -6,6 +6,6 @@
 
 Widget collection to use on HTML + CSS + JS projects.
 
-List of Widgets:
+## List of Widgets:
 
 - [Credit Simulator](credit-simulator/README.md)
