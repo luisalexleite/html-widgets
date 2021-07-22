@@ -9,7 +9,7 @@ Widget that calculates the credit amount required for financing an house in Port
 - Number of years to pay
 - Taxes value and type
 
-![Screenshot_1](https://github.com/luisalexleite/html-widgets/edit/main/credit-simulator/Screenshots/Screen_1.png)
+![Screenshot_1](https://github.com/luisalexleite/html-widgets/blob/main/credit-simulator/Screenshots/Screen_1.png)
 
 ## To embed on your website you add this code:
 
