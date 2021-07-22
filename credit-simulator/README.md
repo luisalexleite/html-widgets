@@ -31,7 +31,7 @@ Widget that calculates the credit amount required for financing an house in Port
 
 - To change the width and height of your widget you must change the width and heigth atributes on <iframe>, more information on how that works in this [link](https://www.w3schools.com/cssref/css_units.asp).
 
-### To be impelmented ❌:
+### To be implemented ❌:
   
 - Readable code and comments
 - Translation to English
